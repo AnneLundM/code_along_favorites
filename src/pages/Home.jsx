@@ -2,7 +2,7 @@ import PageHeader from "../components/pageHeader/PageHeader";
 import useFetchById from "../hooks/useFetchById";
 
 const Home = () => {
-  const recipe = useFetchById(5);
+  const { recipe } = useFetchById(5);
 
   return (
     <section>

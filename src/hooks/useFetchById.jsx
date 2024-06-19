@@ -13,7 +13,7 @@ const useFetchById = (id) => {
     fetchRecipeById(id);
   }, [id]);
 
-  return recipe;
+  return { recipe };
 };
 
 export default useFetchById;
