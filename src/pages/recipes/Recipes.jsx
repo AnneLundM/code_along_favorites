@@ -6,22 +6,24 @@ import Button from "../../components/button/Button";
 import { useState } from "react";
 
 const Recipes = () => {
-  const { recipes, breakfast } = useFetch();
+  const { recipes, breakfast, dinner, lunch } = useFetch();
   const { recipe } = useFetchById(20);
-  const [filteredRecipes, setFilteredRecipes] = useState([...breakfast]);
+  const [filteredRecipes, setFilteredRecipes] = useState([]);
   const [activeFilter, setActiveFilter] = useState("All");
 
   const filters = {
     All: recipes,
     Breakfast: breakfast,
+    Dinner: dinner,
+    Lunch: lunch,
   };
 
   const handleFilterChange = (filter) => {
     setActiveFilter(filter);
-    setFilteredRecipes(filters[filter]);
+    setFilteredRecipes(filters[activeFilter]);
   };
 
-  const recipesArray = filteredRecipes?.length > 0 ? filteredRecipes : recipes;
+  const recipesArray = filteredRecipes.length > 0 ? filteredRecipes : recipes;
 
   return (
     <section>
@@ -29,13 +31,23 @@ const Recipes = () => {
       <div className='filterButtons'>
         <Button
           title='All'
-          className={activeFilter === "All" ? "active" : ""}
+          className={activeFilter === "All" ? "buttonActive" : ""}
           onClick={() => handleFilterChange("All")}
         />
         <Button
           title='Breakfast'
-          className={activeFilter === "Breakfast" ? "active" : ""}
+          className={activeFilter === "Breakfast" ? "buttonActive" : ""}
           onClick={() => handleFilterChange("Breakfast")}
+        />
+        <Button
+          title='Dinner'
+          className={activeFilter === "Dinner" ? "buttonActive" : ""}
+          onClick={() => handleFilterChange("Dinner")}
+        />
+        <Button
+          title='Lunch'
+          className={activeFilter === "Lunch" ? "buttonActive" : ""}
+          onClick={() => handleFilterChange("Lunch")}
         />
       </div>
 

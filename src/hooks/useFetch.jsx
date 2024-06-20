@@ -9,16 +9,16 @@ const useFetch = () => {
     setRecipes(data.recipes);
   };
 
-  let rating = recipes.filter((recipe) => recipe.rating > 4.8);
-  let breakfast = recipes.filter((recipe) =>
-    recipe.mealType.includes("Breakfast")
-  );
+  let dinner = recipes.filter((p) => p.mealType.includes("Dinner"));
+  let breakfast = recipes.filter((p) => p.mealType.includes("Breakfast"));
+  let lunch = recipes.filter((p) => p.mealType.includes("Lunch"));
+  let rating = recipes.filter((p) => p.rating > 4.8);
 
   useEffect(() => {
     fetchRecipes();
   }, []);
 
-  return { recipes, rating, breakfast };
+  return { recipes, rating, breakfast, dinner, lunch };
 };
 
 export default useFetch;

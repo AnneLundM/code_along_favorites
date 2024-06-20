@@ -13,16 +13,8 @@
   position: relative;
   overflow: hidden;
   margin: 1em;
-}
 
-.button:active {
-  transform: translateY(0);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  background-color: red;
+  &:hover {
+    background-color: rgb(255, 182, 140);
+  }
 }
-
-/* .button:hover {
-  background-color: rgb(255, 182, 140);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-} */

@@ -24,3 +24,12 @@ a {
   text-decoration: none;
   color: black;
 }
+
+.filterButtons {
+  text-align: center;
+  padding-top: 2em;
+}
+
+.buttonActive {
+  background-color: rgb(255, 179, 0);
+}
