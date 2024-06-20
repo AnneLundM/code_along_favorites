@@ -1,4 +1,6 @@
+import Favorites from "../components/favorites/Favorites";
 import PageHeader from "../components/pageHeader/PageHeader";
+import SectionHeader from "../components/sectionHeader/SectionHeader";
 import useFetchById from "../hooks/useFetchById";
 
 const Home = () => {
@@ -11,6 +13,8 @@ const Home = () => {
         subTitle='Her kan der stå en undertitel!'
         headerImg={recipe?.image}
       />
+      <SectionHeader title='Brugernes Favoritter' />
+      <Favorites />
     </section>
   );
 };
