@@ -4,11 +4,11 @@ import PageHeader from "../../components/pageHeader/PageHeader";
 import useFetchById from "../../hooks/useFetchById";
 import Button from "../../components/button/Button";
 import { useState } from "react";
+import styles from "../../components/button/button.module.css";
 
 const Recipes = () => {
   const { recipes, breakfast, dinner, lunch } = useFetch();
   const { recipe } = useFetchById(20);
-  const [filteredRecipes, setFilteredRecipes] = useState([]);
   const [activeFilter, setActiveFilter] = useState("All");
 
   const filters = {
@@ -20,39 +20,38 @@ const Recipes = () => {
 
   const handleFilterChange = (filter) => {
     setActiveFilter(filter);
-    setFilteredRecipes(filters[activeFilter]);
   };
 
-  const recipesArray = filteredRecipes.length > 0 ? filteredRecipes : recipes;
+  const filteredRecipes = filters[activeFilter] || recipes;
 
   return (
     <section>
       <PageHeader title='Opskrifter' headerImg={recipe?.image} />
-      <div className='filterButtons'>
+      <div className={styles.filterButtons}>
         <Button
           title='All'
-          className={activeFilter === "All" ? "buttonActive" : ""}
+          className={activeFilter === "All" ? styles.buttonActive : ""}
           onClick={() => handleFilterChange("All")}
         />
         <Button
           title='Breakfast'
-          className={activeFilter === "Breakfast" ? "buttonActive" : ""}
+          className={activeFilter === "Breakfast" ? styles.buttonActive : ""}
           onClick={() => handleFilterChange("Breakfast")}
         />
         <Button
           title='Dinner'
-          className={activeFilter === "Dinner" ? "buttonActive" : ""}
+          className={activeFilter === "Dinner" ? styles.buttonActive : ""}
           onClick={() => handleFilterChange("Dinner")}
         />
         <Button
           title='Lunch'
-          className={activeFilter === "Lunch" ? "buttonActive" : ""}
+          className={activeFilter === "Lunch" ? styles.buttonActive : ""}
           onClick={() => handleFilterChange("Lunch")}
         />
       </div>
 
       <div className='recipes'>
-        {recipesArray.map((recipe) => (
+        {filteredRecipes.map((recipe) => (
           <RecipeCard recipe={recipe} key={recipe.id} />
         ))}
       </div>
