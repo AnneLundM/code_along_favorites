@@ -1,0 +1,15 @@
+.modal {
+  padding: 2em;
+  width: 90%;
+  margin: auto;
+  text-align: center;
+
+  h2 {
+    margin-bottom: 1em;
+  }
+  form {
+    display: flex;
+    justify-content: center;
+    gap: 1em;
+  }
+}

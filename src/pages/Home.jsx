@@ -1,4 +1,6 @@
 import Favorites from "../components/favorites/Favorites";
+import MyFavorites from "../components/myFavorites/MyFavorites";
+import Newsletter from "../components/newsletter/Newsletter";
 import PageHeader from "../components/pageHeader/PageHeader";
 import SectionHeader from "../components/sectionHeader/SectionHeader";
 import useFetchById from "../hooks/useFetchById";
@@ -15,6 +17,10 @@ const Home = () => {
       />
       <SectionHeader title='Brugernes Favoritter' />
       <Favorites />
+      <SectionHeader title='Mine favoritter' />
+      <MyFavorites />
+      <SectionHeader title='Nyhedsbrev' />
+      <Newsletter />
     </section>
   );
 };
