@@ -18,8 +18,13 @@
   width: 100%;
 
   h1 {
-    font-size: 4vw;
+    font-size: 10vw;
     margin: 0;
     text-shadow: 0 2px 10px rgba(0, 0, 0, 0.563);
+  }
+  @media (min-width: 768px) {
+    h1 {
+      font-size: 4vw;
+    }
   }
 }

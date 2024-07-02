@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import styles from "./pageHeader.module.css";
 
 const PageHeader = ({ title, subTitle, headerImg }) => {

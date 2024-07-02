@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import { Link } from "react-router-dom";
 import styles from "./recipeCard.module.css";
 import { FcLike, FcDislike } from "react-icons/fc";
