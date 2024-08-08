@@ -5,9 +5,10 @@ import useFetchById from "../../hooks/useFetchById";
 import Button from "../../components/button/Button";
 import { useState } from "react";
 import styles from "../../components/button/button.module.css";
+import Loader from "../../components/loader/Loader";
 
 const Recipes = () => {
-  const { recipes, breakfast, dinner, lunch } = useFetch();
+  const { recipes, breakfast, dinner, lunch, isLoading, error } = useFetch();
   const { recipe } = useFetchById(20);
   const [activeFilter, setActiveFilter] = useState("All");
 
@@ -25,37 +26,45 @@ const Recipes = () => {
   const filteredRecipes = filters[activeFilter] || recipes;
 
   return (
-    <section>
-      <PageHeader title='Opskrifter' headerImg={recipe?.image} />
-      <div className={styles.filterButtons}>
-        <Button
-          title='All'
-          className={activeFilter === "All" ? styles.buttonActive : ""}
-          onClick={() => handleFilterChange("All")}
-        />
-        <Button
-          title='Breakfast'
-          className={activeFilter === "Breakfast" ? styles.buttonActive : ""}
-          onClick={() => handleFilterChange("Breakfast")}
-        />
-        <Button
-          title='Dinner'
-          className={activeFilter === "Dinner" ? styles.buttonActive : ""}
-          onClick={() => handleFilterChange("Dinner")}
-        />
-        <Button
-          title='Lunch'
-          className={activeFilter === "Lunch" ? styles.buttonActive : ""}
-          onClick={() => handleFilterChange("Lunch")}
-        />
-      </div>
-
-      <div className='recipes'>
-        {filteredRecipes.map((recipe) => (
-          <RecipeCard recipe={recipe} key={recipe.id} />
-        ))}
-      </div>
-    </section>
+    <>
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <section>
+          <PageHeader title='Opskrifter' headerImg={recipe?.image} />
+          <div className={styles.filterButtons}>
+            <Button
+              title='All'
+              className={activeFilter === "All" ? styles.buttonActive : ""}
+              onClick={() => handleFilterChange("All")}
+            />
+            <Button
+              title='Breakfast'
+              className={
+                activeFilter === "Breakfast" ? styles.buttonActive : ""
+              }
+              onClick={() => handleFilterChange("Breakfast")}
+            />
+            <Button
+              title='Dinner'
+              className={activeFilter === "Dinner" ? styles.buttonActive : ""}
+              onClick={() => handleFilterChange("Dinner")}
+            />
+            <Button
+              title='Lunch'
+              className={activeFilter === "Lunch" ? styles.buttonActive : ""}
+              onClick={() => handleFilterChange("Lunch")}
+            />
+          </div>
+          {error && <p>Kunne ikke hente opskrifterne. Fejl: {error}</p>}
+          <div className='recipes'>
+            {filteredRecipes.map((recipe) => (
+              <RecipeCard recipe={recipe} key={recipe.id} />
+            ))}
+          </div>
+        </section>
+      )}
+    </>
   );
 };
 

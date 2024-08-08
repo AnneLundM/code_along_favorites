@@ -8,7 +8,7 @@ const RecipeDetails = () => {
 
   return (
     <section>
-      <PageHeader title={recipe.name} headerImg={recipe.image} />
+      <PageHeader title={recipe?.name} headerImg={recipe?.image} />
     </section>
   );
 };
