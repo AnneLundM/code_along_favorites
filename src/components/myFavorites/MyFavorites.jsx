@@ -10,7 +10,7 @@ const MyFavorites = () => {
     favorites.includes(recipe.id)
   );
 
-  console.log(favoriteRecipes);
+  // console.log(favoriteRecipes);
 
   return (
     <section className='recipes'>
